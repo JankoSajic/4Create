@@ -1,0 +1,42 @@
+--"ProjectsView"
+
+ SELECT "Projects"."Project_Name",
+        CASE
+            WHEN "Projects"."Accepting_New_Visits" THEN 'YES'::text
+            ELSE 'NO'::text
+        END AS "Acceptin_New_Visits",
+    "Projects"."Supported_Image_Type"
+   FROM "Projects";
+   
+--Create Projects
+
+CREATE TABLE public."Projects"
+(
+    "Project_Name" text NOT NULL,
+    "Accepting_New_Visits" boolean NOT NULL,
+    "Supported_Image_Type" text
+);
+
+ALTER TABLE IF EXISTS public."Projects"
+    OWNER to postgres;
+
+--Insert into Projects
+
+INSERT INTO "Projects"
+VALUES('Test project', TRUE, 'JPG')
+--Create Login
+
+CREATE TABLE public."Login"
+(
+    "ID" integer NOT NULL,
+    "Username" text NOT NULL,
+    "Password" text NOT NULL,
+    PRIMARY KEY ("ID")
+);
+
+ALTER TABLE IF EXISTS public."Login"
+    OWNER to postgres;
+	
+--insert into Login
+INSERT INTO "Login"
+VALUES(1, 'Admin', 'Password')
